@@ -1,0 +1,49 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Outlook.Views.ImageViewer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:WindowsPhone8="clr-namespace:Microsoft.AdMediator.WindowsPhone8;assembly=Microsoft.AdMediator.WindowsPhone8"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.Resources>
+        <Style TargetType="ScrollBar">
+            <Setter Property="Background" Value="SteelBlue" />
+            <Setter Property="Foreground" Value="SteelBlue" />
+            <Setter Property="BorderBrush" Value="SteelBlue" />
+        </Style>
+    </phone:PhoneApplicationPage.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="{Binding Source={StaticResource settings},Path=SelectedBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Background="{StaticResource OutlookBrush}">
+            <TextBlock Text="Outlook India" FontSize="{StaticResource PhoneFontSizeMedium}" Grid.Column="0" HorizontalAlignment="Left" Foreground="White" />
+        </Grid>
+
+        <ScrollViewer Grid.Row="1" Margin="5" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Image  Name="MyImage" HorizontalAlignment="Center" VerticalAlignment="Top" Stretch="Fill">
+            </Image>
+        </ScrollViewer>
+
+        <WindowsPhone8:AdMediatorControl x:Name="ImagePageAd_3AC72B" HorizontalAlignment="Center" Height="50" Id="AdMediator-Id-9AAF315B-2D48-42E3-A1BB-07E0825B86D1" Margin="0,0,0,0" Grid.Row="2" VerticalAlignment="Bottom" Width="320" />
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar BackgroundColor="{StaticResource OutlookCustomeColor}" ForegroundColor="White">
+            <shell:ApplicationBarIconButton x:Name="saveImage" IconUri="/Assets/Shares/save.png" Text="save" Click="saveImage_Click" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>

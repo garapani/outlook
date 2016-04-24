@@ -1,0 +1,75 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Outlook.Views.AboutUs"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="false">
+
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:SlideTransition  Mode="SlideDownFadeIn" />
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideRightFadeIn" />
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:SlideTransition Mode="SlideLeftFadeOut" />
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:SlideTransition Mode="SlideUpFadeOut" />
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid Background="White">
+        <!--<Grid.Background>
+            <ImageBrush ImageSource="/Assets/icons/mainpagebackground.png" />
+        </Grid.Background>-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0">
+            <!--<Image Source="/Assets/Icons/logo.jpg" />-->
+            <Border Background="{StaticResource OutlookBrush}">
+                <TextBlock Text="Outlook India" Margin="5" FontSize="{StaticResource PhoneFontSizeMedium}" Foreground="White" />
+            </Border>
+            <TextBlock Text="about" Margin="10" FontSize="{StaticResource PhoneFontSizeLarge}" Foreground="{StaticResource OutlookBrush}" />
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid Grid.Row="1" Margin="12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+                <TextBlock Text="This application helps in reading Outlook India magazine. This application is not sponsored nor endorsed by Outlook India. The logos and content used are from Outlook India website it self." TextWrapping="Wrap" Foreground="Black" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="0,12" Grid.Row="1">
+                <Button Content="Feedback"  Foreground="Black" BorderBrush="Black" Click="Feedback_Click" />
+                <Button Content="My Apps"  Foreground="Black" BorderBrush="Black" Click="MyApps_Click" />
+                <!--<Button Content="More Apps" Foreground="Black" BorderBrush="Black" Click="MoreApps_Click" />-->
+                <Button Content="Rate &amp; Review"  Foreground="Black" BorderBrush="Black" Click="Rate_Click" />
+                <Button Content="Share" Foreground="Black" BorderBrush="Black" Click="Share_Click" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</phone:PhoneApplicationPage>

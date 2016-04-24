@@ -1,0 +1,56 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib">
+
+    <System:String x:Key="ApplicationName">Outlook</System:String>
+
+    <!-- Color styles -->
+
+    <Color x:Key="OutlookCustomeColor">#af0e25</Color>
+
+    <SolidColorBrush x:Key="OutlookBrush"
+                   Color="{StaticResource OutlookCustomeColor}" />
+
+    <Style x:Key="TextBlockBaseStyle"
+         TargetType="TextBlock">
+        <Setter Property="FontFamily"
+            Value="{StaticResource PhoneFontFamilyNormal}" />
+        <Setter Property="FontSize"
+            Value="{StaticResource PhoneFontSizeNormal}" />
+        <Setter Property="Margin"
+            Value="{StaticResource PhoneHorizontalMargin}" />
+    </Style>
+
+    <Style x:Key="TextBlockSubTitleStyle"
+         TargetType="TextBlock">
+        <Setter Property="FontFamily"
+            Value="{StaticResource PhoneFontFamilyNormal}" />
+        <Setter Property="FontSize"
+            Value="{StaticResource PhoneFontSizeMedium}" />
+        <Setter Property="Foreground"
+            Value="{StaticResource OutlookCustomeColor}" />
+        <Setter Property="Margin"
+            Value="{StaticResource PhoneHorizontalMargin}" />
+    </Style>
+
+    <Style x:Name="ArticleDescriptionStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="LineHeight" Value="30" />
+        <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
+    </Style>
+
+    <Style x:Name="ArticleSummaryStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="TextAlignment" Value="Justify" />
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
+
+    <Style x:Name="ArtilceTitleStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="30" />
+        <!--<Setter Property="FontFamily" Value="Georgia" />-->
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="LineHeight" Value="35" />
+    </Style>
+</ResourceDictionary>
