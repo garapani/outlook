@@ -43,69 +43,6 @@ namespace Outlook.Services
 
         #region Properties
 
-        private List<Article> _latestNews;
-        public List<Article> LatestNews
-        {
-            get { return _latestNews; }
-            set { _latestNews = value; RaisePropertyChanged("LatestNews"); }
-        }
-
-        private List<Article> _photos;
-        public List<Article> Photos
-        {
-            get { return _photos; }
-            set { _photos = value; RaisePropertyChanged("Photos"); }
-        }
-
-        private List<Article> _blogs;
-        public List<Article> Blogs
-        {
-            get { return _blogs; }
-            set { _blogs = value; RaisePropertyChanged("Blogs"); }
-        }
-
-        private List<Article> _books;
-        public List<Article> Books
-        {
-            get { return _books; }
-            set { _books = value; RaisePropertyChanged("Books"); }
-        }
-
-        private List<Article> _artsAndEntertainment;
-        public List<Article> ArtsAndEntertainment
-        {
-            get { return _artsAndEntertainment; }
-            set { _artsAndEntertainment = value; RaisePropertyChanged("ArtsAndEntertainment"); }
-        }
-
-        private List<Article> _sports;
-        public List<Article> Sports
-        {
-            get { return _sports; }
-            set { _sports = value; RaisePropertyChanged("Sports"); }
-        }
-
-        private List<Article> _national;
-        public List<Article> National
-        {
-            get { return _national; }
-            set { _national = value; RaisePropertyChanged("National"); }
-        }
-
-        private List<Article> _international;
-        public List<Article> International
-        {
-            get { return _international; }
-            set { _international = value; RaisePropertyChanged("International"); }
-        }
-
-        private List<Article> _business;
-        public List<Article> Business
-        {
-            get { return _business; }
-            set { _business = value; RaisePropertyChanged("Business"); }
-        }
-
         public Settings Settings { get; private set; }
 
         private List<Category> _listofCategories;
@@ -137,18 +74,6 @@ namespace Outlook.Services
             if (_listofCategories == null)
                 _listofCategories = new List<Category>();
 
-            //Task.Run(async () =>
-            //{
-            //    List<Category> categories = await DatabaseOperations.GetInstance().GetCategoriesAsync();
-            //    if (categories != null && categories.Count > 0)
-            //    {
-            //        _listofCategories.AddRange(categories);
-            //    }
-            //    else
-            //    {
-            //        InitializeCategories();
-            //    }
-            //});
             InitializeCategories();
             InitializeLiveTile();
         }
@@ -159,16 +84,6 @@ namespace Outlook.Services
 
         private void InitializeCategories()
         {
-            _latestNews = new List<Article>();
-            _photos = new List<Article>();
-            _sports = new List<Article>();
-            _national = new List<Article>();
-            _international = new List<Article>();
-            _business = new List<Article>();
-            _books = new List<Article>();
-            _blogs = new List<Article>();
-            _artsAndEntertainment = new List<Article>();
-
             Category tempCategory = new Category();
             tempCategory.CategoryName = LATESTNEWS;
             tempCategory.CategoryUrl = categoryUrlTemplate + LATESTNEWS;
@@ -327,84 +242,6 @@ namespace Outlook.Services
                     category.CategoryUrl = categoryUrlTemplate + categoryName;
                     await DatabaseOperations.GetInstance().AddCategoryAsync(category);
                 }
-                //List<Article> tempArticles = new List<Article>();
-                //switch (categoryName)
-                //{
-                //    case LATESTNEWS:
-                //        tempArticles.AddRange(LatestNews);
-                //        break;
-                //    case SPORTS:
-                //        tempArticles.AddRange(_sports);
-                //        break;
-                //    case BUSINESS:
-                //        tempArticles.AddRange(_business);
-                //        break;
-                //    case NATIONAL:
-                //        tempArticles.AddRange(_national);
-                //        break;
-                //    case INTERNATIONAL:
-                //        tempArticles.AddRange(_international);
-                //        break;
-                //    case BOOKS:
-                //        tempArticles.AddRange(_books);
-                //        break;
-                //    case BLOGS:
-                //        tempArticles.AddRange(_blogs);
-                //        break;
-                //    case ARTSANDENETERTAINEMNT:
-                //        tempArticles.AddRange(_artsAndEntertainment);
-                //        break;
-                //    case PHOTOS:
-                //        tempArticles.AddRange(_photos);
-                //        break;
-                //}
-                //if (tempArticles.Count > 0)
-                //{
-                //    //if (refresh || isForce)
-                //    //{
-                //    //    if (NetworkInterface.GetIsNetworkAvailable())
-                //    //    {
-                //    //        var oldArticles = await DatabaseOperations.GetInstance().GetCategoryArticlesAsync(categoryName);
-                //    //        if (oldArticles != null && oldArticles.Count > 0)
-                //    //        {
-                //    //            articles.AddRange(oldArticles);
-                //    //        }
-                //    //        tempCategory.isRrefreshing = true;
-                //    //        category.isRrefreshing = true;
-                //    //        OutlookClient client = new OutlookClient();
-                //    //        var latestArticles = await client.GetArticlesAsync(categoryName);
-                //    //        if (latestArticles != null && latestArticles.Count > 0)
-                //    //        {
-                //    //            articles.AddRange(latestArticles.ToList());
-                //    //            foreach (var article in articles)
-                //    //            {
-                //    //                await DatabaseOperations.GetInstance().AddOrUpdateArticleAsync(article);
-                //    //            }
-                //    //            tempCategory.LastUpdated = DateTime.Now;
-                //    //            category.LastUpdated = DateTime.Now;
-                //    //        }
-                //    //        category.isRrefreshing = false;
-                //    //        await DatabaseOperations.GetInstance().UpdateCategoryAsync(category);
-                //    //    }
-                //    //}
-                //    //else
-                //    //{
-                //    //    var tempArticles = await DatabaseOperations.GetInstance().GetCategoryArticlesAsync(categoryName);
-                //    //    if (tempArticles != null && tempArticles.Count > 0)
-                //    //    {
-                //    //        articles.AddRange(tempArticles);
-                //    //    }
-                //    //}
-                //    //if (tempCategory.Articles == null)
-                //    //{
-                //    //    tempCategory.Articles = new ObservableCollection<Article>();
-                //    //}
-                //    //else
-                //    //{
-                //    //    tempCategory.Articles.Clear();
-                //    //}
-                //    //articles.OrderByDescending(o => o.ArticleDate).ToList().ForEach(o => tempCategory.Articles.Add(o));
-                //}
 
                 var tempCategory = _listofCategories.Find(o => o.CategoryName.ToLower() == categoryName.ToLower());
                 if (tempCategory != null)
@@ -418,18 +255,20 @@ namespace Outlook.Services
                             {
                                 articles.AddRange(oldArticles);
                             }
-                            tempCategory.isRrefreshing = true;
+                            _listofCategories.Find(o => o.CategoryName.ToLower() == categoryName.ToLower()).isRrefreshing = true;
                             category.isRrefreshing = true;
                             OutlookClient client = new OutlookClient();
                             var latestArticles = await client.GetArticlesAsync(categoryName);
                             if (latestArticles != null && latestArticles.Count > 0)
                             {
-                                articles.AddRange(latestArticles.ToList());
-                                foreach (var article in articles)
+                                //articles.AddRange(latestArticles.ToList());
+                                foreach (var article in latestArticles)
                                 {
+                                    if (articles.Find(o => o.HeadLine == article.HeadLine) == null)
+                                        articles.Add(article);
                                     await DatabaseOperations.GetInstance().AddOrUpdateArticleAsync(article);
                                 }
-                                tempCategory.LastUpdated = DateTime.Now;
+                                _listofCategories.Find(o => o.CategoryName.ToLower() == categoryName.ToLower()).LastUpdated = DateTime.Now;
                                 category.LastUpdated = DateTime.Now;
                             }
                             category.isRrefreshing = false;
@@ -444,15 +283,15 @@ namespace Outlook.Services
                             articles.AddRange(tempArticles);
                         }
                     }
-                    if (tempCategory.Articles == null)
+                    if (_listofCategories.Find(o => o.CategoryName.ToLower() == categoryName.ToLower()).Articles == null)
                     {
-                        tempCategory.Articles = new ObservableCollection<Article>();
+                        _listofCategories.Find(o => o.CategoryName.ToLower() == categoryName.ToLower()).Articles = new ObservableCollection<Article>();
                     }
                     else
                     {
-                        tempCategory.Articles.Clear();
+                        _listofCategories.Find(o => o.CategoryName.ToLower() == categoryName.ToLower()).Articles.Clear();
                     }
-                    articles.OrderByDescending(o => o.ArticleDate).ToList().ForEach(o => tempCategory.Articles.Add(o));
+                    articles.OrderByDescending(o => o.ArticleDate).ToList().ForEach(o => _listofCategories.Find(l => l.CategoryName.ToLower() == categoryName.ToLower()).Articles.Add(o));
                 }
             }
             catch (Exception)
@@ -577,7 +416,7 @@ namespace Outlook.Services
                     }
                 }
             }
-            else if(_listofCategories == null)
+            else if (_listofCategories == null)
             {
                 List<Category> categories = await DatabaseOperations.GetInstance().GetCategoriesAsync();
                 if (categories != null && categories.Count > 0)
@@ -601,7 +440,7 @@ namespace Outlook.Services
                     {
                         _listofCategories.FirstOrDefault(l => l.CategoryName.ToLower() == category.ToLower()).Articles.Add(o);
                     });
-                    
+
                     CurrentArticle = article = categoryArticles.FirstOrDefault(o => o.HeadLine == headLine);
                 }
             }

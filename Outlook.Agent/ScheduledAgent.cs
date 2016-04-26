@@ -1,12 +1,10 @@
 ﻿using Microsoft.Phone.Scheduler;
 using Microsoft.Phone.Shell;
-using Newtonsoft.Json;
 using Outlook.Client;
 using Outlook.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Threading.Tasks;

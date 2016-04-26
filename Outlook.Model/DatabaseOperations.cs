@@ -77,7 +77,7 @@ namespace Outlook.Model
             {
                 try
                 {
-                    var allArticles = from article in _dbConnection.Table<Article>() where article.ID == articleToAddorUpdate.ID select article;
+                    var allArticles = from article in _dbConnection.Table<Article>() where article.HeadLine == articleToAddorUpdate.HeadLine select article;
                     if (allArticles != null && await allArticles.CountAsync() >= 1)
                     {
                         await _dbConnection.UpdateAsync(articleToAddorUpdate);

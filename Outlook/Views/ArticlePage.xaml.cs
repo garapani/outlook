@@ -1,7 +1,9 @@
-﻿using Microsoft.Phone.Controls;
+﻿using GalaSoft.MvvmLight.Threading;
+using Microsoft.Phone.Controls;
 using Outlook.Model;
 using Outlook.ViewModel;
 using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Navigation;
@@ -59,8 +61,7 @@ namespace Outlook.Views
                     Article article = null;
                     if (!string.IsNullOrEmpty(headline) && !string.IsNullOrEmpty(category))
                     {
-                        await _articleViewModel.SetCurrentArticle(headline, category);
-                        onePivot.DataContext = _articleViewModel.Article;
+                        onePivot.DataContext = _articleViewModel.Article = await _articleViewModel.SetCurrentArticle(headline, category);
                         UpdateStory();
                         UpdateFontStyleButtons();
                         if (_articleViewModel.Article == null)
@@ -81,23 +82,6 @@ namespace Outlook.Views
                     {
                         NavigationService.GoBack();
                     }
-
-                    //_articleViewModel.IsFetchingArticle = true;
-                    //if (previousIndex == 0)
-                    //{
-                    //    onePivot.DataContext = _articleViewModel.Article;
-                    //}
-                    //else if (previousIndex == 1)
-                    //{
-                    //    secondPivot.DataContext = _articleViewModel.Article;
-                    //}
-                    //else if (previousIndex == 2)
-                    //{
-                    //    onePivot.DataContext = _articleViewModel.Article;
-                    //}
-                    //UpdateAllStories();
-                    //_articleViewModel.IsFetchingArticle = false;
-                    //UpdateFontStyleButtons();
                 }
             }
         }

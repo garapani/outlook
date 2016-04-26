@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en" />
-  <App xmlns="" ProductID="{3036c314-b669-4fd8-b000-5954843eb94f}" Title="Outlook India" RuntimeType="Silverlight" Version="2.0.0.0" Genre="apps.normal" Author="Venkat" Description="Outlook India Magazine" Publisher="The Village Software" BitsPerPixel="32" PublisherID="{77304a90-cf86-4e9a-94d8-14831c4c7fd1}">
+  <App xmlns="" ProductID="{3036c314-b669-4fd8-b000-5954843eb94f}" Title="Outlook India" RuntimeType="Silverlight" Version="2.1.0.0" Genre="apps.normal" Author="Venkat" Description="Outlook India Magazine" Publisher="The Village Software" BitsPerPixel="32" PublisherID="{77304a90-cf86-4e9a-94d8-14831c4c7fd1}">
     <IconPath IsRelative="true" IsResource="false">Assets\Icons\AppLogoOutlook.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_IDENTITY_DEVICE" />

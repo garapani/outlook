@@ -139,9 +139,11 @@ namespace Outlook.ViewModel
             try
             {
                 var storeURI = DeepLinkHelper.BuildApplicationDeepLink();
-                EmailComposeTask emailComposeTask = new EmailComposeTask {
+                EmailComposeTask emailComposeTask = new EmailComposeTask
+                {
                     Subject = string.Format("Outlook India: {0}", Article.HeadLine),
-                    Body = String.Format("Hi,\n\nThis article will interest you: {0}\n\n{1}\n\nSent by the \"Outlook India\" for Windows Phone 8.For the App you can click this link. " + storeURI, Article.HeadLine, Article.WebURL)};
+                    Body = String.Format("Hi,\n\nThis article will interest you: {0}\n\n{1}\n\nSent by the \"Outlook India\" for Windows Phone 8.For the App you can click this link. " + storeURI, Article.HeadLine, Article.WebURL)
+                };
                 emailComposeTask.Show();
             }
             catch
@@ -164,10 +166,12 @@ namespace Outlook.ViewModel
         {
             try
             {
-                ShareLinkTask shareLinkTask = new ShareLinkTask {
+                ShareLinkTask shareLinkTask = new ShareLinkTask
+                {
                     Title = "Read this article!",
                     LinkUri = new Uri(Article.WebURL, UriKind.Absolute),
-                    Message = Article.HeadLine};
+                    Message = Article.HeadLine
+                };
                 shareLinkTask.Show();
             }
             catch (Exception)
